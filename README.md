@@ -3,7 +3,7 @@
 When the laptop is being constantly used with a charger plugged in it is better to limit the charging at 60% to 80% to improve the battery health.
 Many laptop vendors like Asus provide software utility to set the battery max charge threshold but it works only in windows.
 
-With Linux kernel 5.4 added the ability to set a battery charge threshold for many Asus laptops this script used it to set the limit.
+With Linux kernel 5.4 added the ability to set a battery charge threshold for many Asus laptops this script uses it to set the limit.
 
 ## Usage
 Run the script limit.sh with max battery threshold as an argument
