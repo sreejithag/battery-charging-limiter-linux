@@ -10,7 +10,9 @@ Run the script limit.sh with max battery threshold as an argument
 
 `eg: ./limit.sh 60`
 
+*Will prompt to enter the password since it needs sudo permission* 
+
 Will set the battery threshold to 60% so even if the laptop is plugged in it won't charge beyond 60% helps to protect the battery health.
 
  
-Tested in Asus laptop with AMD Ryzen 3500U running Linux mint 20 Linux Kernal  5.8.0-25-generic 
+>Tested in Asus laptop with AMD Ryzen 3500U running Linux mint 20 Linux Kernal  5.8.0-25-generic 
