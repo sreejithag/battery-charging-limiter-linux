@@ -31,6 +31,18 @@ Enable the service
 
 Reboot the system and check if limit works
 
+#### Renable full capacity 
+
+Run the limit.sh script with 100%
+
+`./limit.sh 100`
+
+Note: make the script executable before running 
+`chmod +x limit.sh`
+
+Disable the systemd service 
+
+`sudo systemctl disable battery-manager.service`
 
 
 ## More info
