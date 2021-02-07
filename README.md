@@ -51,4 +51,4 @@ Disable the systemd service
 
 
 -----
->Tested in Asus laptop with AMD Ryzen 3500U running Linux mint 20 Linux Kernal  5.8.0-25-generic 
+>Tested in Asus vivobook 15 with AMD Ryzen 3500U running Linux mint 20 Kernal 5.8.0-25-generic 
