@@ -14,6 +14,9 @@ Run the script limit.sh with max battery threshold as an argument
 
 Will set the battery threshold to 60% so even if the laptop is plugged in it won't charge beyond 60% helps to protect the battery health.
 
+###### Set as systemd service
+
+
 
 ## More info
 * [ASUS Battery Information Center](https://www.asus.com/support/FAQ/1038475/)
