@@ -10,7 +10,7 @@ This script can be used to set a max bettrey charge thrsehold.
 
 Run th script limit.sh with max battery threshold as argument
 
-eg: ./limit.sh 60
+`eg: ./limit.sh 60`
 
 Will set the battery threshold to 60% so even if laptop is pulgged in it won't charge beyond 60% helps to protect the abttery health.
 
