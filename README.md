@@ -23,6 +23,8 @@ Create a battery-manager service by creating **battery-manager.service** file at
 
 `sudo nano /etc/systemd/system/battery-manager.service`
 
+Paste the contents from [**battery-manager.service**]() 
+
 
 
 
