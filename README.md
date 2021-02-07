@@ -16,7 +16,7 @@ Will set the battery threshold to 60% so even if the laptop is plugged in it won
 
 
 ### More info
-..* [ASUS Battery Information Center](https://www.asus.com/support/FAQ/1038475/)
+... [ASUS Battery Information Center](https://www.asus.com/support/FAQ/1038475/)
 
 
 -----
