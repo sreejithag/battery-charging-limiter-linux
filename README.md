@@ -19,7 +19,7 @@ Will set the battery threshold to 60% so even if the laptop is plugged in it won
 Set limit will be reset to 100% on system reboot.\
 To apply the settings on reboot make a systemd service for that.
 
-Create a battery-manager service by creating battery-manager.service file at /etc/systemd/system/ 
+Create a battery-manager service by creating **battery-manager.service** file at **/etc/systemd/system/** 
 
 `sudo nano /etc/systemd/system/battery-manager.service`
 
