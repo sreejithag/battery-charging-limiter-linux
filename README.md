@@ -23,15 +23,13 @@ Create a battery-manager service by creating **battery-manager.service** file at
 
 `sudo nano /etc/systemd/system/battery-manager.service`
 
-Paste the contents from [**battery-manager.service**](https://raw.githubusercontent.com/sreejithag/battery-manager-linux/main/battery-manager.service) and save using ctrl+o (sets battery threshold to 60% change to something else if needed)
+Paste the contents from [**battery-manager.service**](https://raw.githubusercontent.com/sreejithag/battery-manager-linux/main/battery-manager.service) and save using ctrl+o (sets battery threshold to 60% change if needed)
 
 Enable the service 
 
 `sudo systemctl enable battery-manager.service`
 
-Rebbot the system 
-
-
+Reboot the system and check if limit works
 
 
 
