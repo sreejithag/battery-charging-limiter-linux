@@ -37,7 +37,7 @@ Run the limit.sh script with 100%
 
 `./limit.sh 100`
 
-Note: make the script executable before running 
+Note: make the script executable before running by executing 
 `chmod +x limit.sh`
 
 Disable the systemd service 
