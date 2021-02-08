@@ -47,7 +47,7 @@ Disable the systemd service
 
 ## More info
 * [ASUS Battery Information Center](https://www.asus.com/support/FAQ/1038475/)
-* [Arch Wiki](https://www.asus.com/support/FAQ/1038475/)
+* [Arch Wiki](https://wiki.archlinux.org/index.php/Laptop/ASUS#Battery_charge_threshold)
 
 
 -----
