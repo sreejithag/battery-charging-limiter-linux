@@ -14,13 +14,15 @@ Run the script limit.sh with max battery threshold as an argument
 
 Will set the battery threshold to 60% so even if the laptop is plugged in it won't charge beyond 60% helps to protect the battery health.
 
-*limit.sh set limit won't persist on system reboot*
+*Note: limit.sh set limit won't persist on system reboot*
 
 or 
 
-For operating systems with systemd  use other script limitd.sh that will create a systemd service to apply the limit on system reboot.
+For operating systems with systemd use other script limitd.sh that will create a systemd service to apply the limit on system reboot.
 
 `eg: ./limitd.sh 60`
+
+*limitd.sh set limit will persist on system reboot*
 
 
 Reboot the system and check if limit works
