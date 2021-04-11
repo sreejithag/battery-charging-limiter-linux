@@ -35,7 +35,7 @@ or
 
 `./limitd.sh 100 `
 
-
+This will persist the change on reboot if sytemd is available 
 
 Note: make the script executable before running by executing 
 `chmod +x limit.sh`
