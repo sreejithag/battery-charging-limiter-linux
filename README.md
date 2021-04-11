@@ -14,20 +14,14 @@ Run the script limit.sh with max battery threshold as an argument
 
 Will set the battery threshold to 60% so even if the laptop is plugged in it won't charge beyond 60% helps to protect the battery health.
 
-#### Set a systemd service
+*note: limit.sh set limit won't persist on system reboot" 
 
-Set limit will be reset to 100% on system reboot.\
-To apply the settings on reboot make a systemd service for that.
+or 
 
-Create a battery-manager service by creating **battery-manager.service** file at **/etc/systemd/system/** 
+For operating systems with systemd  use other script limitd.sh that will create a systemd service to apply the limit on system reboot.
 
-`sudo nano /etc/systemd/system/battery-manager.service`
+`eg: ./limitd.sh 60`
 
-Paste the contents from [**battery-manager.service**](https://raw.githubusercontent.com/sreejithag/battery-manager-linux/main/battery-manager.service) and save using ctrl+o (sets battery threshold to 60% change if needed)
-
-Enable the service 
-
-`sudo systemctl enable battery-manager.service`
 
 Reboot the system and check if limit works
 
