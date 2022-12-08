@@ -12,7 +12,7 @@ if [ "$#" -ge  1 ]; then
             cd /tmp
             echo "[Unit]
 Description=To set battery charge threshold
-After=multi-user.target
+After=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 StartLimitBurst=0
 
 [Service]
@@ -21,7 +21,7 @@ Restart=on-failure
 ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT?/charge_control_end_threshold'
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 " > battery-manager.service
 
             echo "created battery-manager.service `tput setaf 2`✓ `tput sgr0`"
