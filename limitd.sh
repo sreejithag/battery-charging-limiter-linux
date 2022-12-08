@@ -18,7 +18,7 @@ if [ "$#" -ge  1 ]; then
             [Service]
             Type=oneshot
             Restart=on-failure
-            ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT0/charge_control_end_threshold'
+            ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT?/charge_control_end_threshold'
 
             [Install]
             WantedBy=multi-user.target" > battery-manager.service
