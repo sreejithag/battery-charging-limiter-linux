@@ -13,11 +13,9 @@ if [ "$#" -ge  1 ]; then
             echo "[Unit]
 Description=To set battery charge threshold
 After=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
-StartLimitBurst=0
 
 [Service]
 Type=oneshot
-Restart=on-failure
 ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT?/charge_control_end_threshold'
 
 [Install]
