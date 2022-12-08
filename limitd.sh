@@ -11,17 +11,18 @@ if [ "$#" -ge  1 ]; then
 			echo $max | sudo tee /sys/class/power_supply/BAT?/charge_control_end_threshold > /dev/null
             cd /tmp
             echo "[Unit]
-            Description=To set battery charge threshold
-            After=multi-user.target
-            StartLimitBurst=0
+Description=To set battery charge threshold
+After=multi-user.target
+StartLimitBurst=0
 
-            [Service]
-            Type=oneshot
-            Restart=on-failure
-            ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT?/charge_control_end_threshold'
+[Service]
+Type=oneshot
+Restart=on-failure
+ExecStart=/bin/bash -c 'echo $max > /sys/class/power_supply/BAT?/charge_control_end_threshold'
 
-            [Install]
-            WantedBy=multi-user.target" > battery-manager.service
+[Install]
+WantedBy=multi-user.target
+" > battery-manager.service
 
             echo "created battery-manager.service `tput setaf 2`✓ `tput sgr0`"
 
