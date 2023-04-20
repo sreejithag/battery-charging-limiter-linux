@@ -3,12 +3,18 @@
 limit="$1"
 
 throw_err() {
-    echo "error occurred!"
+    if [ $# -eq 0 ]; then
+        msg="Unknown error occurred    :("
+    else
+        msg="$1"
+    fi
+
+    echo "$msg    :("
     exit 1
 }
 
 set_limit() {
-    echo "$limit" > /sys/class/power_supply/BAT?/charge_control_end_threshold || (echo "Could not create init script    :(" && exit)
+    echo "$limit" > /sys/class/power_supply/BAT?/charge_control_end_threshold || throw_err "Could not create init script"
 	echo "Max battery capacity is set to be limiting to $limit%    $(tput setaf 2)✓ $(tput sgr0)"
 }
 
@@ -23,7 +29,7 @@ create_init() {
     description=\"limit battery charging\"
     command=\"echo $limit > /sys/class/power_supply/BAT?/charge_control_end_threshold\"
     pidfile=\"/run/\${RC_SVCNAME}.pid\"
-    " > batlimit || (echo "Could not create init script    :(" && exit)
+    " > batlimit || throw_err "Could not create init script"
 
     echo "init script creation complete    $(tput setaf 2)✓ $(tput sgr0)"
 
@@ -58,7 +64,8 @@ check_root() {
 
 if check_val && check_root; then
     # set_limit
-    create_init
+    # create_init
+    throw_err "test"
 else
     exit 1
 fi
