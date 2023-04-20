@@ -4,7 +4,7 @@ limit="$1"
 
 throw_err() {
     if [ $# -eq 0 ]; then
-        msg="Unknown error occurred    :("
+        msg="Unknown error occurred"
     else
         msg="$1"
     fi
@@ -18,24 +18,23 @@ set_limit() {
 	echo "Max battery capacity is set to be limiting to $limit%    $(tput setaf 2)✓ $(tput sgr0)"
 }
 
-
-
 create_init() {
-    cd /tmp || throw_err
+    cd /tmp || throw_err "Could not cd into /tmp"
 
-    echo "#!/sbin/openrc-run
-
-    name=\$RC_SVCNAME
-    description=\"limit battery charging\"
-    command=\"echo $limit > /sys/class/power_supply/BAT?/charge_control_end_threshold\"
-    pidfile=\"/run/\${RC_SVCNAME}.pid\"
-    " > batlimit || throw_err "Could not create init script"
+    echo "#!/sbin/openrc-run" > batlimit || throw_err "Could not create init script"
+    {
+    echo ""
+    echo "name=\$RC_SVCNAME"
+    echo "description=\"limit battery charging\""
+    echo "command=\"echo $limit > /sys/class/power_supply/BAT?/charge_control_end_threshold\""
+    echo "pidfile=\"/run/\${RC_SVCNAME}.pid\""
+    } >> batlimit
 
     echo "init script creation complete    $(tput setaf 2)✓ $(tput sgr0)"
 
-    # cp batlimit /etc/init.d/
-    # rc-update add batlimit default || (echo "Could not add service to runlevel default    :(" && exit)
-    # echo "Openrc init script \"batlimit\" added to runlevel default     $(tput setaf 2)✓ $(tput sgr0)"
+    cp batlimit /etc/init.d/
+    rc-update add batlimit default || throw_err "Could not add service to runlevel default"
+    echo "Openrc init script \"batlimit\" added to runlevel default     $(tput setaf 2)✓ $(tput sgr0)"
 }
 
 check_val() {
@@ -62,10 +61,11 @@ check_root() {
     return 0
 }
 
+
 if check_val && check_root; then
-    # set_limit
-    # create_init
-    throw_err "test"
+    if set_limit
+    then create_init
+    fi
 else
     exit 1
 fi
