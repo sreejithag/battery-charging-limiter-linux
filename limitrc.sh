@@ -1,42 +1,64 @@
 #!/usr/bin/env bash
 
-max="$1"
+limit="$1"
+
+throw_err() {
+    echo "error occurred!"
+    exit 1
+}
+
+set_limit() {
+    echo "$limit" > /sys/class/power_supply/BAT?/charge_control_end_threshold || (echo "Could not create init script    :(" && exit)
+	echo "Max battery capacity is set to be limiting to $limit%    $(tput setaf 2)✓ $(tput sgr0)"
+}
+
+
 
 create_init() {
-    if [ "$max" -ge  1 ]; then
-	    if echo "$max" | grep -E -q '^[0-9]+$'; then
-		    if [ "$max" -gt 100 ] || [ "$max" -le 0 ]; then
-			    echo "Please enter a valid max limit between [1-100]"
-		    else
-		        echo "$max" > /sys/class/power_supply/BAT?/charge_control_end_threshold || (echo "Could not create init script    :(" && exit)
-			    echo "Max battery capacity is set to be limiting to $max%    $(tput setaf 2)✓ $(tput sgr0)"
+    cd /tmp || throw_err
 
-                cp batlimit /etc/init.d/
-                rc-update add batlimit default || (echo "Could not add service to runlevel default    :(" && exit)
-                echo "Openrc init script \"batlimit\" added to runlevel default     $(tput setaf 2)✓ $(tput sgr0)"
-		    fi
-	    else
-		    echo "Please enter a numeric max value"
-	    fi
+    echo "#!/sbin/openrc-run
+
+    name=\$RC_SVCNAME
+    description=\"limit battery charging\"
+    command=\"echo $limit > /sys/class/power_supply/BAT?/charge_control_end_threshold\"
+    pidfile=\"/run/\${RC_SVCNAME}.pid\"
+    " > batlimit || (echo "Could not create init script    :(" && exit)
+
+    echo "init script creation complete    $(tput setaf 2)✓ $(tput sgr0)"
+
+    # cp batlimit /etc/init.d/
+    # rc-update add batlimit default || (echo "Could not add service to runlevel default    :(" && exit)
+    # echo "Openrc init script \"batlimit\" added to runlevel default     $(tput setaf 2)✓ $(tput sgr0)"
+}
+
+check_val() {
+    if ! echo "$limit" | grep -E -q '^[0-9]+$'; then
+        echo "Enter a numeric max limit"
+    elif [ "$limit" -gt 100 ] || [ "$limit" -le 0 ]; then
+		echo "Please enter a valid max limit between [1-100]"
     else
-	    echo "Please enter the max limit and try again"
+        return 0
     fi
+
+    return 1
 }
 
 check_root() {
     echo "checking permissions..."
 
-    if [ "$EUID" -ne 0 ]
-        then return 1
+    if [ "$EUID" -ne 0 ]; then
+        echo "You must run this script as root"
+        return 1
     fi
 
+    echo "root    $(tput setaf 2)✓ $(tput sgr0)"
     return 0
 }
 
-if ! check_root; then
-    echo "You must run this script as root"
-    exit
-else
-    echo "root    $(tput setaf 2)✓ $(tput sgr0)"
+if check_val && check_root; then
+    # set_limit
     create_init
+else
+    exit 1
 fi
