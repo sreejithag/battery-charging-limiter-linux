@@ -24,6 +24,9 @@ For operating systems with systemd use other script limitd.sh that will create a
 
 *limitd.sh set limit will persist on system reboot*
 
+Or if you use Runit instead of systemd, use limit_runit.sh
+
+`eg: ./limit_runit.sh 60`
 
 Reboot the system and check if limit works
 
@@ -37,10 +40,14 @@ or
 
 `./limitd.sh 100 `
 
-This will persist the change on reboot if sytemd is available 
+This will persist the change on reboot if systemd is available
 
-Note: make the script executable before running by executing 
-`chmod +x limit.sh`
+Or use 'limit_runit.sh' for Runit.
+
+`./limit_runit.sh 100`
+
+Note: make the scripts executable before running by executing 
+`eg: chmod +x limit.sh`
 
 
 ## More info
@@ -49,4 +56,4 @@ Note: make the script executable before running by executing
 
 
 -----
->Tested in Asus vivobook 15 with AMD Ryzen 3500U running Linux mint 20 Kernal 5.8.0-25-generic 
+>Tested with Asus vivobook 15 with AMD Ryzen 3500U running Linux mint 20 Kernal 5.8.0-25-generic and Asus Vivobook 15 PRO OLED Ryzen5900 M3500 using 5.3.1 artix-linux
