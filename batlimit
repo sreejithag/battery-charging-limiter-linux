@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="limit battery charging"
+command="echo 70 > /sys/class/power_supply/BAT?/charge_control_end_threshold"
+pidfile="/run/${RC_SVCNAME}.pid"
