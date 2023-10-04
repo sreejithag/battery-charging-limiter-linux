@@ -56,4 +56,7 @@ Note: make the scripts executable before running by executing
 
 
 -----
->Tested with Asus vivobook 15 with AMD Ryzen 3500U running Linux mint 20 Kernal 5.8.0-25-generic and Asus Vivobook 15 PRO OLED Ryzen5900 M3500 using 5.3.1 artix-linux
+>Tested with :
+> - Asus vivobook 15 with AMD Ryzen 3500U running Linux mint 20 Kernal 5.8.0-25-generic;
+> - Asus Vivobook 15 PRO OLED Ryzen5900 M3500 using 5.3.1 artix-linux;
+> - Asus TUF Gaming F15 using Debian 12;
